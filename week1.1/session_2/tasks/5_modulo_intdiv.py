@@ -2,7 +2,7 @@
 # it needs to convert the minutes late into days, hours and minutes
 # all file handling has been done - the section you need to edit is marked by comments below
 
-with open("_data/lateness_data.csv") as f:
+with open("/workspaces/semester-1/week1.1/session_2/tasks/_data/lateness_data.csv") as f:
     data = f.readlines()
 
 data = [line.strip().split(",") for line in data]
@@ -18,9 +18,9 @@ for row in data:
     # for example: if minutes_late is 2000, then days = 1, hours = 9, minutes = 20
     # hint: there are 1440 minutes in a day (24 * 60)
     
-    days = 0
-    hours = 0
-    minutes = 0
+    days = minutes_late // 1440
+    hours = (minutes_late%1440) // 60
+    minutes = minutes_late % 60
     
     print(f"Student {row[0]}: {days}D {hours}H {minutes}M")
 

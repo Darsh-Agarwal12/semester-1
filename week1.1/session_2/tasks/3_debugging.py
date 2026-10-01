@@ -3,8 +3,8 @@
 
 # Find and fix the errors
 
-name = imput("Enter your name: ")
-int(age) = input("Enter your age: ")
- city = input("Enter your city: ")
+name = input("Enter your name: ")   #fixed the spelling of input
+age = int(input("Enter your age: ")) # fixed the type conversion
+city = input("Enter your city: ") # Removed extra space before city
 
-print("Hello {name}, you are {age} years old and live in {city}.")
+print(f"Hello {name}, you are {age} years old and live in {city}.") # Added closing parenthesis and fixed the f-string formatting
