@@ -7,12 +7,12 @@
    you were right.
 
    ```python
-   not (3 > 1)
-   (4 > 2) and (6 > 8)
-   (5 == 5) or (2 > 10)
-   not (10 > 5 or 3 != 3)
-   5 < 10 < 15
-   3 <= 3 < 10 and (10 == 10 or 5 > 8)
+   not (3 > 1) #False
+   (4 > 2) and (6 > 8) #False
+   (5 == 5) or (2 > 10) #True
+   not (10 > 5 or 3 != 3) #False
+   5 < 10 < 15 #True
+   3 <= 3 < 10 and (10 == 10 or 5 > 8) #True
    ```
 
 3. Press `Ctrl+D` to exit the interpreter.
