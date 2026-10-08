@@ -15,4 +15,3 @@ try:
         print(f"{grd} is a Fail")
 except ValueError:
     sys.exit("Grade must be an integer between 0 and 100")
-
