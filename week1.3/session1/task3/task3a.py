@@ -4,6 +4,9 @@ i = 0
 
 while i < 20:
     i = i + 1
+    if not i%3:
+        continue
+    
     print(i)
 
 # Add logic using continue so that multiples of 3 are not printed out

@@ -1,9 +1,11 @@
 # Week 1.3, Session 1: Task 5a
 
 course = "computer science"
-
+chr=[]
 for ch in course:
-	print(ch)
+	chr.append(ch)
+chr.sort()
+print(chr)
 
 
 # create a list data structure of the characters from the course string

@@ -3,7 +3,7 @@
 # open a named text file for reading using open() function
 # the `with` statement closes the file automatically as the block of code finishes executing
 
-with open('file_data.txt', 'r') as file:  
+with open('/workspaces/semester-1/week1.3/session1/task2/file_data.txt', 'r') as file:  
 
     while True:
         # read by character
@@ -21,3 +21,4 @@ with open('file_data.txt', 'r') as file:
 # We use 'break' to exit the reading process at the end of the file.
 
 # Why do we use an infinite 'while True' loop for this process?
+#We use an infinete 'While True' loop for this process because we don't know the length of the file, in order to not miss anything unread in the file.

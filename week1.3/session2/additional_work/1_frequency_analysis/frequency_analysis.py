@@ -6,7 +6,33 @@
 # open and read the file 
 # and count how many instances of each letter are in the program
 # hint: use a dictionary!
-
+try:
+    with open('/workspaces/semester-1/week1.3/session2/additional_work/1_frequency_analysis/story.txt','r') as f, open('/workspaces/semester-1/week1.3/session2/additional_work/1_frequency_analysis/code.txt','r') as c:
+        data = f.read()
+        data_code=c.read()
+        letters={}
+        letters_code={}
+        for ch in data.lower():
+            if ch.isalpha():
+                if ch in letters.keys():
+                    letters[ch]+=1
+                else:
+                    letters[ch]=1
+            else:
+                continue
+        for ch in data_code.lower():
+                    if ch.isalpha():
+                        if ch in letters_code.keys():
+                            letters_code[ch]+=1
+                        else:
+                            letters_code[ch]=1
+                    else:
+                        continue
+        
+    print('story.txt: ',letters)
+    print('code.txt: ',letters_code)
+except EOFError:
+    print("End of file")
 # Additional hints:
 # - You could handle the case where the file might not exist with try-except
 # - You'll need to check each character to see if it's a letter
