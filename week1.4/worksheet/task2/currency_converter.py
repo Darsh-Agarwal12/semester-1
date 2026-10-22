@@ -6,7 +6,7 @@
     other than any provided template code, was written and developed by
     you independently.
 
-    Name:
+    Name: Darsh Agarwal
 """
 
 def currency_converter(amount, from_currency, to_currency):
@@ -19,9 +19,16 @@ def currency_converter(amount, from_currency, to_currency):
     }
 
     # your code here
+    if amount < 0:
+            amount = 0.00
+            return amount
 
+    if from_currency in conversion_rate and to_currency in conversion_rate[from_currency]:
+        converted_amount = amount * conversion_rate[from_currency][to_currency]
+        return round(converted_amount, 2)
+    elif from_currency == to_currency:
+        return round(amount, 2)
     return None
-
 # Submit only this file currency_converter.py with the completed function.
 
 # Remove any additional code you may have added during development and testing.

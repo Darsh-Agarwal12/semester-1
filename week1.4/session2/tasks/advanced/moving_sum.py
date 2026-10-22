@@ -12,3 +12,12 @@
     for the list such as moving_cummulative_sum(x) with x being the
     list to be operated on.
 """
+def moving_cummulative_sum(lst):   
+    if not list:
+        return []
+    if len(lst) == 1:
+        return lst
+    else:
+        return [lst[0]] + moving_cummulative_sum([lst[0] + lst[1]] + lst[2:])
+
+print(moving_cummulative_sum([5,6,7,1,2,3]))  # Output: [5, 11, 18, 19, 21, 24]

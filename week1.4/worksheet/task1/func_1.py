@@ -7,5 +7,5 @@ def func_1(lst_value):
     sum = 0 
     num_of_value = len(lst_value) 
     for value in lst_value: 
-    sum = sum + value 
+        sum = sum + value 
     return sum/num_of_value 
