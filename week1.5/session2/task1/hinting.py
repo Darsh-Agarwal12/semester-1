@@ -10,20 +10,22 @@ class Point:
     A point in 2D space.
     """
 
-    def __init__(self, x, y):
+    def __init__(self, x:float, y:float):
         """
         Creates a Point, given x & y coordinates.
         """
         self.x = x
         self.y = y
+        if not isinstance(x, (int, float)) or not isinstance(y, (int, float)):
+            raise TypeError("Coordinates must be numeric values.")
 
-    def distance(self):
+    def distance(self) -> float:
         """
         Returns distance of this Point from the origin.
         """
         return math.hypot(self.x, self.y)
 
-    def distance_to(self, p):
+    def distance_to(self, p: 'Point') -> float:
         """
         Returns distance of this Point from the specified Point.
         """
@@ -32,5 +34,5 @@ class Point:
 
 # Test program
 
-p = Point("two", "one")
+p = Point(2, 1)
 print(p.distance())

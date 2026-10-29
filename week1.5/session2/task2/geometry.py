@@ -32,6 +32,11 @@ class Point:
         return math.hypot(self.x - p.x, self.y - p.y)
 
     # Implement a __str__() method here
+    def __str__(self):
+        """
+        Returns a string representation of the Point.
+        """
+        return f"Point({self.x}, {self.y})"
 
 
 class Circle:
@@ -63,3 +68,8 @@ class Circle:
         return 2.0 * math.pi * self.radius
 
     # Implement a __str__() method here
+    def __str__(self):
+        """
+        Returns a string representation of the Circle.
+        """
+        return f"Circle(radius={self.radius}, centre={self.centre})"
