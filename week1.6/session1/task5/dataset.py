@@ -149,25 +149,15 @@ class QuakeDataset:
                 weakest = quake
         return weakest
 
-    def format_quakes(self):
+    def export_to_csv(self, filename):
         """
-        Returns a formatted table, each containing details of a quake.
+        Exports the data in this dataset to a CSV file.
         """
         if len(self.data) == 0:
             raise QuakeDatasetError("dataset is empty")
-
-        # Write code here that creates a formatted table of quakes
-        # (i.e., a string with one line per quake, each line containing
-        # the time, latitude, longitude, depth and magnitude of the quake)
-        lines = []
-        for quake in self.data:
-            lines.append(f"{quake.when} {quake.latitude} {quake.longitude} {quake.depth} {quake.magnitude}")
-        return "\n".join(lines)
-
-    def range_longitude_latitude(self):
-        """
-        Returns the details of all quakes within a specified number of degrees of a specified longitude and latitude.
-        """
-        
+        with open(filename, 'w') as f:
+            f.write("time,latitude,longitude,depth,magnitude\n")
+            for quake in self.data:
+                f.write(f"{quake.when},{quake.latitude},{quake.longitude},{quake.depth},{quake.magnitude}\n")
 
     
