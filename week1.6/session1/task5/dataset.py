@@ -10,6 +10,7 @@ class QuakeDatasetError(Exception):
     """
     An exception type for errors involving QuakeDataset.
     """
+    pass
 
 
 class QuakeDataset:
@@ -42,11 +43,27 @@ class QuakeDataset:
         # each dictionary and convert them into the required types before
         # creating a Quake object and storing it in the list.
 
+        self.data = []
+        for item in self.feed.reader():
+            time_text = item['time'].replace('Z', '')
+            time_obj = datetime.fromisoformat(time_text)
+            quake = Quake(
+                time_obj,
+                float(item['latitude']),
+                float(item['longitude']),
+                float(item['depth']),
+                float(item['mag'])
+            )
+            # Add it to our list
+            self.data.append(quake)
+        
+
     def __len__(self):
         """
         Returns the size of this dataset.
         """
         # Write code here that returns the number of quakes downloaded
+        return len(self.data)
 
     def __str__(self):
         """
@@ -54,6 +71,7 @@ class QuakeDataset:
         """
         # Write code here to create and return a string representation
         # (Include number of quakes and details of the feed that was used)
+        return f"{len(self.data)} quakes, from {self.feed}"
 
     def mean_depth(self):
         """
@@ -71,6 +89,11 @@ class QuakeDataset:
         """
         # Write code here that computes the mean magnitude of all the
         # quakes currently in the dataset
+        if len(self.data) == 0:
+            raise QuakeDatasetError("dataset is empty")
+
+        total = sum(quake.magnitude for quake in self.data)
+        return total / len(self.data)
 
     def shallowest_quake(self):
         """
@@ -91,3 +114,60 @@ class QuakeDataset:
         """
         # Write code here that finds and returns the strongest quake
         # (i.e., the one with the largest magnitude)
+        if len(self.data) == 0:
+            raise QuakeDatasetError("dataset is empty")
+
+        strongest = self.data[0]
+        for quake in self.data[1:]:
+            if quake.magnitude > strongest.magnitude:
+                strongest = quake
+        return strongest
+
+    def deepest_quake(self):
+        """
+        Returns details of the deepest quake in this dataset.
+        """
+        if len(self.data) == 0:
+            raise QuakeDatasetError("dataset is empty")
+
+        deepest = self.data[0]
+        for quake in self.data[1:]:
+            if quake.depth > deepest.depth:
+                deepest = quake
+        return deepest
+
+    def weakest_quake(self):
+        """
+        Returns details of the weakest quake in this dataset.
+        """
+        if len(self.data) == 0:
+            raise QuakeDatasetError("dataset is empty")
+
+        weakest = self.data[0]
+        for quake in self.data[1:]:
+            if quake.magnitude < weakest.magnitude:
+                weakest = quake
+        return weakest
+
+    def format_quakes(self):
+        """
+        Returns a formatted table, each containing details of a quake.
+        """
+        if len(self.data) == 0:
+            raise QuakeDatasetError("dataset is empty")
+
+        # Write code here that creates a formatted table of quakes
+        # (i.e., a string with one line per quake, each line containing
+        # the time, latitude, longitude, depth and magnitude of the quake)
+        lines = []
+        for quake in self.data:
+            lines.append(f"{quake.when} {quake.latitude} {quake.longitude} {quake.depth} {quake.magnitude}")
+        return "\n".join(lines)
+
+    def range_longitude_latitude(self):
+        """
+        Returns the details of all quakes within a specified number of degrees of a specified longitude and latitude.
+        """
+        
+
+    
